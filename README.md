@@ -11,6 +11,11 @@
 <p align="center"><strong>一个用于学习的智能体框架。</strong></p>
 
 <p align="center">
+  <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest"><img src="https://img.shields.io/github/v/release/xipantingfeng/learn-harness-zh?label=version" alt="version"></a>
+  <img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="license">
+</p>
+
+<p align="center">
   <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest">下载</a> ·
   <a href="#工作原理">工作原理</a> ·
   <a href="docs/README.md">文档</a> ·

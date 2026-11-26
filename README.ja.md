@@ -11,6 +11,11 @@
 <p align="center"><strong>学習のためのエージェントフレームワーク。</strong></p>
 
 <p align="center">
+  <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest"><img src="https://img.shields.io/github/v/release/xipantingfeng/learn-harness-zh?label=version" alt="version"></a>
+  <img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="license">
+</p>
+
+<p align="center">
   <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest">ダウンロード</a> ·
   <a href="#特徴">特徴</a> ·
   <a href="#仕組み">仕組み</a> ·

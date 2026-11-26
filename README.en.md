@@ -11,6 +11,11 @@
 <p align="center"><strong>An agent harness for learning.</strong></p>
 
 <p align="center">
+  <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest"><img src="https://img.shields.io/github/v/release/xipantingfeng/learn-harness-zh?label=version" alt="version"></a>
+  <img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="license">
+</p>
+
+<p align="center">
   <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest">Download</a> ·
   <a href="#highlights">Highlights</a> ·
   <a href="#how-it-works">How it works</a> ·
