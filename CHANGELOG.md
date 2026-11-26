@@ -17,7 +17,7 @@
 - **计划确认卡**（#2-lite）：仅最新计划显示，确认/修改；非硬闸门。
 - **中文全局错误页** `app/global-error.tsx`。
 - **最小 i18n**（#4-lite）：`lib/i18n.ts` + `messages/zh-CN.json` + `t()`。
-- **工程化**：`tsc --noEmit` 0 errors、`next build` exit 0、CI `.github/workflows/ci.yml`。
+- **工程化**：`tsc --noEmit` 0 errors、`next build` exit 0。
 - 精简安装体积；修复 shiki 缺包；修复 6 个 TS 错误并移除 `ignoreBuildErrors`。
 - 已翻译/新增文案同步更新 `messages/zh-CN.json`。
 
