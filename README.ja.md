@@ -25,7 +25,7 @@
 
 知学 1.0 は、現在の理解度から出発して AI エージェントが学習計画を立て、学習に合わせてその理解モデルを更新します。説明を出すだけではありません。回答、確信度、考えた過程が「次に進むか」「例を変えるか」「問題を出すか」を決めます。学んだ内容は永続的なナレッジグラフに蓄積され、セッションをまたいで引き継がれます。
 
-![知学 ホーム画面](docs/assets/zh/home.png)
+![中国語の教授セッション](docs/assets/zh/teaching-session.png)
 
 ## 特徴
 
@@ -35,6 +35,8 @@
 - **引き継がれる知識。** 命題と推論の連鎖が元セッションへのリンクとともに保存され、以降の教授・練習がゼロから始めずにグラフを読み取ります。
 - **ローカルファースト。** 会話、グラフ、設定、キーはすべてローカルに保存されます。アプリ内アップデートは既定で無効です。
 - **3 プラットフォーム。** Windows、Linux、macOS 用のすぐ実行できるパッケージを提供します。Windows は解凍して `知学.exe` を起動するだけです。
+
+![ホーム画面と一行の例prompt](docs/assets/zh/home.png)
 
 ## 仕組み
 
@@ -61,9 +63,13 @@
 
 **[GitHub Releases からダウンロード](https://github.com/xipantingfeng/learn-harness-zh/releases/latest)**
 
-- **Windows (x64)：** アーカイブを解凍し `知学.exe` を実行します。インストール、Node.js、依存関係のダウンロードは不要です。
-- **Linux (x64)：** 解凍して `bash run.sh` を実行するか、`zhixue` に実行権限を付けて直接起動します。
-- **macOS (Apple Silicon / Intel)：** 解凍して `知学.app` を開きます。Gatekeeper でブロックされた場合は右クリックで「開く」を選択してください。`安装.command` で実行権限を設定できます。
+| プラットフォーム | ファイル | インストール方法 |
+| --- | --- | --- |
+| Windows x64 | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | 解凍して `知学.exe` をダブルクリック |
+| Linux x64 | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
+| macOS Apple Silicon | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) | 解凍して `知学.app` を開く。必要なら `安装.command` を実行 |
+| macOS Intel | [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | 同上 |
+| チェックサム | [SHA256SUMS.txt](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/SHA256SUMS.txt) | `sha256sum -c SHA256SUMS.txt` |
 
 モデルを選び、理解したい内容でセッションを始めます。プロバイダの API キー、デスクトップ版のサブスクリプション接続、インストール済みの Claude Code CLI、カスタム OpenAI 互換エンドポイント（ローカルモデルサーバーを含む）に対応しています。音声入力と Web 検索には別のサービスキーが必要です。
 

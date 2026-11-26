@@ -213,7 +213,7 @@ describe("render smoke tests", () => {
 				options: [{ label: "Physics" }, { label: "Philosophy" }],
 			} as never,
 		});
-		assert.match(html, /select all that apply/);
+		assert.match(html, /多选/);
 		assert.ok(html.includes('role="group"'), "checkbox group");
 		assert.ok((html.match(/role="checkbox"/g) ?? []).length >= 3, "options AND the Other row are checkboxes");
 		assert.ok(html.includes('data-testid="other-option"'), "Other is still an option row in multi-select");

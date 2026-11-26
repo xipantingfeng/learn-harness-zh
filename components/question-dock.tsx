@@ -85,11 +85,11 @@ const QC_CONFIDENCE_VALUE = "w-[4ch] shrink-0 text-center font-mono text-sm tabu
 
 /** The question card's label: the tool's own name for probe-phase calls. */
 export function questionCardLabel(tool: string | undefined, kind: string, questionType: string | undefined): string {
-	if (tool === "probe") return "Probe";
-	if (tool === "recall") return "Recall";
-	if (kind === "quiz") return questionType === "predict" ? "Prediction" : "Check";
-	if (kind === "explain") return "Explain";
-	return "Question";
+	if (tool === "probe") return "探查";
+	if (tool === "recall") return "回忆";
+	if (kind === "quiz") return questionType === "predict" ? "预测" : "检验";
+	if (kind === "explain") return "讲解";
+	return "问题";
 }
 
 /** What an answered card knows of the question it answered. Rendered
@@ -121,7 +121,7 @@ export function questionCardStandIn(doc: Document, c: QuestionCardContent): { qu
 	};
 	const contents = (live: HTMLElement) => [...live.childNodes].map((n) => (n instanceof HTMLElement ? cloneWithImageSizes(n) : n.cloneNode(true)));
 	const question = el("div", "",
-		el("div", QC_LABEL, c.label + (c.multiSelect ? " · select all that apply" : "")),
+		el("div", QC_LABEL, c.label + (c.multiSelect ? " · 多选" : "")),
 		el("div", QC_QUESTION, ...contents(c.question)),
 	);
 	if (c.context) question.append(el("div", QC_CONTEXT, ...contents(c.context)));
@@ -895,7 +895,7 @@ function QuestionDockForm({
 		<div ref={questionPartRef} data-question-part="">
 			<div className={QC_LABEL}>
 				{questionCardLabel(toolName, kind, qd.questionType)}
-				{qd.mode === "multi-select" && " · select all that apply"}
+				{qd.mode === "multi-select" && " · 多选"}
 			</div>
 			<div className={QC_QUESTION}>
 				<ToolContentResponse>{qd.question}</ToolContentResponse>

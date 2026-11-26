@@ -31,7 +31,7 @@ export function mountReference(root: HTMLElement, ctx: PluginFrontendContext, re
   const slots: HTMLElement[] = [];
   const label = document.createElement("div");
   label.className = "drawing-pad-reference-label";
-  label.textContent = reference.label + (reference.multiple ? " · select all that apply" : "");
+  label.textContent = reference.label + (reference.multiple ? " · 多选" : "");
   root.append(label);
   const markdown = (parent: HTMLElement, text: string, className: string) => {
     if (!text) return;

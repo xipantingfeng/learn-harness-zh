@@ -48,6 +48,7 @@
     "plugin-authoring",
     "tests",
     "core-plugins",
-    "plugins"
+    "plugins",
+    "release"
   ]
 }

@@ -25,7 +25,7 @@
 
 Zhixue 1.0 uses AI agents to plan lessons from your current understanding and updates that picture as you learn. It does more than produce explanations: your answers, confidence, and thinking decide what comes next — another step, a different example, or a problem. What you learn accumulates in a persistent knowledge graph that carries across sessions.
 
-![Zhixue home screen](docs/assets/zh/home.png)
+![Chinese teaching session](docs/assets/zh/teaching-session.png)
 
 ## Highlights
 
@@ -35,6 +35,8 @@ Zhixue 1.0 uses AI agents to plan lessons from your current understanding and up
 - **Knowledge that carries forward.** Propositions and reasoning chains are stored with links back to their source sessions, so later teaching and practice read the graph instead of starting over.
 - **Local first.** Chats, graph, settings, and keys stay on your machine. In-app updates are disabled by default.
 - **Three platforms.** Ready-to-run packages for Windows, Linux, and macOS. On Windows, unpack the archive and run `知学.exe`.
+
+![Home screen and one-line example prompts](docs/assets/zh/home.png)
 
 ## How it works
 
@@ -61,9 +63,13 @@ Future teaching sessions read the graph rather than starting from scratch, and p
 
 **[Download from GitHub Releases](https://github.com/xipantingfeng/learn-harness-zh/releases/latest)**
 
-- **Windows (x64):** unpack the archive and run `知学.exe`. No installer, no Node.js, no dependency downloads.
-- **Linux (x64):** unpack and run `bash run.sh`, or make `zhixue` executable and run it directly.
-- **macOS (Apple Silicon / Intel):** unpack and open `知学.app`. If Gatekeeper blocks it, right-click and choose Open. `安装.command` sets the executable bit.
+| Platform | File | Install |
+| --- | --- | --- |
+| Windows x64 | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | Unpack and run `知学.exe`; no installer needed |
+| Linux x64 | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
+| macOS Apple Silicon | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) | Unpack and open `知学.app`; run `安装.command` if needed |
+| macOS Intel | [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | Same as above |
+| Checksums | [SHA256SUMS.txt](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/SHA256SUMS.txt) | `sha256sum -c SHA256SUMS.txt` |
 
 Choose your models, then start a session with what you want to understand. Provider API keys, desktop subscription connections, an installed Claude Code CLI, or a custom OpenAI-compatible endpoint (including a local model server) are supported. Dictation and web search use separate service keys.
 

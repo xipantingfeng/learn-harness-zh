@@ -24,7 +24,7 @@
 
 知学 1.0 用 AI 智能体从你当前的理解出发规划课程，并在学习过程中不断更新对你的认知。它不只是给解释：你的回答、置信度和思考过程决定了下一步是继续讲、换例子，还是出题。学到的内容沉淀在持久知识图谱中，跨会话延续。
 
-![知学首页](docs/assets/zh/home.png)
+![中文教学会话](docs/assets/zh/teaching-session.png)
 
 ## 亮点
 
@@ -34,6 +34,8 @@
 - **知识会延续**：命题与推理链连同来源会话一起保存，后续教学和练习直接读取，不必每次从零开始。
 - **本地优先**：会话、图谱、设置与密钥都在本机；应用内更新默认关闭，程序不会自行替换。
 - **三平台可用**：Windows、Linux、macOS 均提供可直接运行的包；Windows 包解压后双击 `知学.exe` 即可。
+
+![首页与一行式示例提示](docs/assets/zh/home.png)
 
 ## 工作原理
 
@@ -60,9 +62,13 @@
 
 **[从 GitHub Releases 下载](https://github.com/xipantingfeng/learn-harness-zh/releases/latest)**
 
-- **Windows (x64)：** 解压压缩包，运行 `知学.exe`。无需安装、无需 Node.js、无需下载依赖。
-- **Linux (x64)：** 解压后运行 `bash run.sh`，或赋予 `zhixue` 可执行权限后直接运行。
-- **macOS (Apple Silicon / Intel)：** 解压后打开 `知学.app`。若被 Gatekeeper 拦截，右键选择“打开”。包内附 `安装.command` 用于设置执行权限。
+| 平台 | 文件 | 安装方式 |
+| --- | --- | --- |
+| Windows x64 | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | 解压后双击 `知学.exe`，无需安装 |
+| Linux x64 | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
+| macOS Apple Silicon | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) | 解压打开 `知学.app`；必要时运行 `安装.command` |
+| macOS Intel | [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | 同上 |
+| 校验 | [SHA256SUMS.txt](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/SHA256SUMS.txt) | `sha256sum -c SHA256SUMS.txt` |
 
 选择模型后，用你想理解的内容开启一个会话。可以使用提供商 API 密钥、桌面版订阅连接、已安装的 Claude Code CLI，或自定义 OpenAI 兼容端点（含本地模型服务）。听写与网页检索需要单独的服务密钥。
 
