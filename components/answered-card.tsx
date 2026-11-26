@@ -178,11 +178,11 @@ export function AnsweredCard({ answer: savedAnswer, input, toolCallId }: { answe
 				{label}
 				{isQuiz &&
 					(answer.dontKnow ? (
-						<StatusBadge text="didn't know" />
+						<StatusBadge text="不知道" />
 					) : answer.correct ? (
-						<StatusBadge text="correct" color="var(--lh-success)" />
+						<StatusBadge text="正确" color="var(--lh-success)" />
 					) : (
-						<StatusBadge text="incorrect" color="var(--lh-error)" />
+						<StatusBadge text="错误" color="var(--lh-error)" />
 					))}
 			</div>
 			<div ref={questionTextRef} className="mb-3 font-medium">

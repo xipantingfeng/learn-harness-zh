@@ -76,11 +76,11 @@ export function ProblemCard({ part }: ArtifactPartProps) {
 }
 
 const OUTCOME_LABEL: Record<string, string> = {
-	solved: "Solved",
+	solved: "已解决",
 	solvedWithHints: "借助提示完成",
 	movedOn: "已跳过",
-	surrendered: "Surrendered",
-	dismissed: "Dismissed",
+	surrendered: "已放弃",
+	dismissed: "已忽略",
 };
 
 /* The outcome chips (owner round 3, 2026-10-05): the EXACT register of the
