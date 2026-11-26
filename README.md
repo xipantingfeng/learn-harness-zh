@@ -1,67 +1,80 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/zh/home.png">
-    <source media="(prefers-color-scheme: light)" srcset="docs/assets/zh/home.png">
-    <img src="docs/assets/zh/home.png" alt="知学" width="640">
-  </picture>
+<p align="right">
+  <a href="README.md">简体中文</a> ·
+  <a href="README.en.md">English</a> ·
+  <a href="README.ja.md">日本語</a>
 </p>
 
-<p align="center"><strong>An agent harness for learning.</strong></p>
-
 <p align="center">
-  <a href="https://github.com/xipantingfeng/learn-harness-zh/releases">Download</a> ·
-  <a href="#how-it-works">How it works</a> ·
-  <a href="docs/README.md">Documentation</a> ·
-  <a href="https://github.com/xipantingfeng/learn-harness-zh/issues">Issues</a>
+  <img src="docs/assets/zh/banner.png" alt="知学" width="720">
 </p>
 
-知学 1.0 uses AI agents to plan and teach lessons from your current understanding to your goal. It builds a detailed picture of what you understand and how you reason. That picture is updated as you learn. The whole interface is in Chinese, with a focused home screen, one-line example prompts, and actions that stay out of the way until they are useful.
+<p align="center"><strong>一个用于学习的智能体框架。</strong></p>
 
-Instead of just giving you an explanation, it uses your answers and thinking to decide what you need next. Teaching builds understanding one reasoning step at a time. Practice makes it usable. A persistent knowledge graph carries it across sessions.
+<p align="center">
+  <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest">下载</a> ·
+  <a href="#工作原理">工作原理</a> ·
+  <a href="docs/README.md">文档</a> ·
+  <a href="https://github.com/xipantingfeng/learn-harness-zh/issues">问题反馈</a>
+</p>
 
-![知学 home screen](docs/assets/zh/home.png)
+知学 1.0 用 AI 智能体从你当前的理解出发规划课程，并在学习过程中不断更新对你的认知。它不只是给解释：你的回答、置信度和思考过程决定了下一步是继续讲、换例子，还是出题。学到的内容沉淀在持久知识图谱中，跨会话延续。
 
-## How it works
+![知学首页](docs/assets/zh/home.png)
 
-1. **Measure.** Before teaching, the agent finds where your understanding ends on each part the lesson depends on. Your answers, confidence, and thinking show it where to start.
-2. **Plan.** It works out a dependency map from that starting point to your goal. The plan is visible, and a confirmation card lets you approve or revise it before teaching begins.
-3. **Teach.** Each step builds on something you already understand. You predict, get an explanation, and check your understanding. Confusions are repaired before anything is built on them. Reply-level actions — simpler, more detail, another example, quiz me — prefill the composer without sending on your behalf.
-4. **Practice.** Separate sessions pose varied problems that require the right knowledge to come to mind without being named first. Problems and hints adapt to your reasoning.
+## 亮点
 
-**Think out loud.** The thinking fields let you explain your reasoning, uncertainties, and reactions in your own words. This is how the agent gets a detailed picture rather than just a record of right and wrong answers. You can type or use dictation.
+- **看得见的计划**：教学前先给出依赖图，确认卡让你在开始前批准或修改，而不是直接开讲。
+- **回答级快捷操作**：再简单点、再详细点、换个例子、我没懂、总结一下、考考我——只预填，不替你发送。
+- **一行式示例提示**：首页四个具体提示同排显示，点一下填入输入框即可发送。
+- **知识会延续**：命题与推理链连同来源会话一起保存，后续教学和练习直接读取，不必每次从零开始。
+- **本地优先**：会话、图谱、设置与密钥都在本机；应用内更新默认关闭，程序不会自行替换。
+- **三平台可用**：Windows、Linux、macOS 均提供可直接运行的包；Windows 包解压后双击 `知学.exe` 即可。
 
-**Bring your files.** In the desktop app, attach PDFs, photos, or any other file with the paperclip, or drag them in. The file stays where it is: the message carries its path, and the agent reads it from there.
+## 工作原理
 
-The agent can also research questions in the background, create visual explanations, show your own images in the lesson and mark them up with arrows and labels (including figures it crops straight out of your PDFs, such as lecture slides), and build interactive demonstrations.
+1. **探查。** 教学前，智能体先找出你在这门课依赖的每个环节上的理解边界。你的回答、置信度和思考说明它该从哪里开始。
+2. **规划。** 从起点到目标生成依赖图。计划可见，如果你的理解与预设不同，课程会随之调整。
+3. **教学。** 每一步都建立在你已经理解的内容上。你先预测，再看解释，然后检验理解；困惑在继续之前被修复。
+4. **练习。** 独立会话提出变式题，要求你在没有被先点名的情况下想起正确的知识。题目与提示根据你的推理调整。
 
-## Knowledge that carries forward
+**说出思考。** 思考字段让你用自己的话写下推理、疑问和反应，智能体由此形成细节丰富的认知图像，而不只是对错记录。支持打字或口述。
 
-What you are taught accumulates as propositions and reasoning chains: individual claims and the premises that lead to them. The graph shows this structure, with links back to the source sessions. You can also import notes.
+**带上文件。** 在桌面版里可以用回形针附加 PDF、图片等文件，或直接拖入。文件留在原处，消息只携带路径，智能体从那里读取。
 
-Future teaching sessions can read the graph instead of starting from scratch. Practice sessions can draw their material from it. It stores the ideas and their connections, not ratings of your ability.
+智能体还可以在后台检索资料、生成可视化说明、在课程中展示并标注你自己的图片（包括从 PDF 中裁出的幻灯片），以及构建交互式演示。
 
-## Download and get started
+## 知识会延续
 
-**[Download from GitHub Releases](https://github.com/xipantingfeng/learn-harness-zh/releases/latest)**
+教学内容以命题和推理链的形式积累：每一条主张，以及导向它的前提。图谱展示这种结构，并保留回到来源会话的链接。你也可以导入笔记。
 
-- **Windows (x64):** unpack the archive and run `知学.exe`. No installer, no Node.js, no dependency downloads.
-- **Linux (x64):** unpack the archive and run the `知学` executable.
-- **macOS (Apple Silicon / Intel):** unpack the archive and open `知学.app`. Gatekeeper may ask you to allow an app from an unidentified developer; right-click and choose Open once.
+后续教学会话读取图谱而不是从零开始，练习会话则从图谱中取材料。它保存的是想法及其联系，而不是对你的能力评分。
 
-Choose your models, then start a session with what you want to understand. You can use provider API keys, supported subscription connections in the desktop app, an installed Claude Code CLI, or a custom OpenAI-compatible endpoint, including a local model server. Optional dictation and web search use separate service keys.
+![知识图谱界面](docs/assets/zh/knowledge-graph.png)
 
-See [Getting started](docs/getting-started.md) for model setup, dictation, files, and notes imports, and [context, caching, and costs](docs/compaction-accounting.md) for advanced cache preferences.
+## 下载与开始
 
-In-app updates are disabled: the app never replaces itself silently.
+**[从 GitHub Releases 下载](https://github.com/xipantingfeng/learn-harness-zh/releases/latest)**
 
-## Your keys, your data
+- **Windows (x64)：** 解压压缩包，运行 `知学.exe`。无需安装、无需 Node.js、无需下载依赖。
+- **Linux (x64)：** 解压后运行 `bash run.sh`，或赋予 `zhixue` 可执行权限后直接运行。
+- **macOS (Apple Silicon / Intel)：** 解压后打开 `知学.app`。若被 Gatekeeper 拦截，右键选择“打开”。包内附 `安装.command` 用于设置执行权限。
 
-- **Your keys and models.** No subscription or markup. Billing depends on your provider, CLI configuration, subscription, or local setup. The live cost meter estimates known API costs, not subscription, CLI, or custom-endpoint charges.
-- **Local storage.** Your chats, graph, settings, and API keys live on your machine under `%APPDATA%\知学`. Learning records are plain files you can inspect.
-- **External services.** Models run through your configured providers. Model requests send the context needed for the task; web research and dictation also contact external services. Local storage does not mean offline processing.
-- **Inspectable behavior.** System prompts are visible and editable. The app is open source under the AGPL-3.0 license.
+选择模型后，用你想理解的内容开启一个会话。可以使用提供商 API 密钥、桌面版订阅连接、已安装的 Claude Code CLI，或自定义 OpenAI 兼容端点（含本地模型服务）。听写与网页检索需要单独的服务密钥。
 
-## Development and support
+模型与密钥的入口集中在设置里，界面与状态提示均为中文：
+
+![设置界面](docs/assets/zh/settings.png)
+
+更多内容见 [入门指南](docs/getting-started.md) 与 [上下文、缓存与成本](docs/compaction-accounting.md)。
+
+## 你的密钥与数据
+
+- **密钥与模型。** 没有订阅或加价；账单取决于你的提供商、CLI 配置、订阅或本地方案。成本计数器只估算已知 API 成本，不涵盖订阅、CLI 或自定义端点。
+- **本地存储。** 会话、图谱、设置和密钥保存在本机 `%APPDATA%\知学`。学习记录是可以直接查看的普通文件。
+- **外部服务。** 模型通过你配置的提供商运行；网页检索与听写也会访问外部服务。本地存储不等于离线处理。
+- **可检查的行为。** 系统提示词可见、可编辑。应用以 AGPL-3.0 开源。
+
+## 开发与支持
 
 ```bash
 npm ci
@@ -70,14 +83,11 @@ npm run dev        # http://localhost:3000
 npm test           # fixtures and fake providers
 ```
 
-See the [documentation index](docs/README.md) for all guides, [development](docs/development.md) for setup and checks, [architecture](docs/architecture.md) for the runtime, [keyboard shortcuts](docs/keyboard.md), and [desktop builds](docs/zh-CN/build-windows.md) for the packaging flow.
+完整指南见 [文档索引](docs/README.md)、[开发说明](docs/development.md)、[架构](docs/architecture.md)、[快捷键](docs/keyboard.md) 与 [桌面打包](docs/zh-CN/build-windows.md)。
 
-Questions, bug reports, and feature requests: [GitHub Issues](https://github.com/xipantingfeng/learn-harness-zh/issues).
+问题、缺陷与功能建议：[GitHub Issues](https://github.com/xipantingfeng/learn-harness-zh/issues)。
+安全问题请按 [SECURITY.md](SECURITY.md) 私下报告，不要提交公开 issue。
 
-Security vulnerabilities: report privately as described in [SECURITY.md](SECURITY.md), not in public issues.
+## 许可
 
-## License
-
-[AGPL-3.0](LICENSE)
-
-Includes code from LearnHarness; attribution and modification notes are in [NOTICE](NOTICE). The app is free and open forever. If anything is ever charged, it will be for convenience — managed keys, hosting — never for features you can run locally.
+[AGPL-3.0](LICENSE)。包含来自 LearnHarness 的代码，署名与修改说明见 [NOTICE](NOTICE)。应用永久免费开源；若未来提供收费服务，也仅针对托管与密钥管理等便利，而不是本地可运行的功能。
