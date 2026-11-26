@@ -42,7 +42,7 @@
 - **计划确认卡**：计划生成后给一张「确认，开始教学 / 修改计划」的卡片，只挂在最新计划上；已回复或生成中不显示。
 - **中文错误页**：页面加载失败时给中文提示和日志位置，而不是白屏。
 - **独立 Windows 程序**：复制 Electron 外壳并改名、强制 `zh-CN`、断掉更新链；Next standalone 构建产物完整自包含。
-- **工程化**：`tsc --noEmit` 0 errors、`next build` 成功；CI 配置见 `.github/workflows/`。
+- **工程化**：`tsc --noEmit` 0 errors、`next build` 成功。
 
 我**故意保留英文**的部分：ChatGPT、Claude Code、DeepSeek、Deepgram、Tavily、OpenAI、GitHub、Pi 等品牌名，以及**发给模型的提示词正文**——改那些会改变 AI 的行为。模型输入标签（`Your thinking`、`Tutor quote` 引用格式）也保持原样，避免和已有数据失配。
 
