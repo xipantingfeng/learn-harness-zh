@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+dist/
+build/
+*.tsbuildinfo
+*.log
+
+# Generated app-owned plugin packages and transactional staging (built by npm run build)
+/core-plugins/
+/.core-plugins-*/
+
+# Generated offline authoring-skill download (npm run plugins:build-authoring)
+/public/plugin-authoring/
+/plugin-authoring/
+
+# Local data and credentials — never publish
+data/
+auth.json
+chatgpt-credentials.json*
+github-copilot-credentials.json*
+xai-credentials.json*
+*credentials.json
+.env
+.env.*
+!.env.example
+!.env.*.example
+.memory/
+.fresh-data/
+SCOPE.md
+real-data-extraction/
+# raw real-data import sources (never commit)
+*.log
+
+# Local build artifacts / toolchain
+app.asar
+node.exe
+tscheck-*.log
+build-*.log
+
+# Personal rebuild notes (keep local, not part of the published source)
+README-使用与重建.txt
+启动中文版.cmd
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

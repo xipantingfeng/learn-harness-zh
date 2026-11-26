@@ -1,0 +1,46 @@
+知学·学习助手 (learn-harness-zh)
+=================================
+
+本分支是上游 LearnHarness 0.7.0 的**非官方中文本地化版**。
+
+上游项目
+--------
+- 名称：LearnHarness 0.7.0
+- 版权：Copyright (C) 2026 Amos Blomqvist and contributors
+- 许可证：AGPL-3.0-only
+- 源码：https://github.com/amosblomqvist/learnharness
+- 原始说明：保留在本仓库 README.upstream.md，并以链接形式引用上游 docs/
+
+本分支
+------
+- 仓库名：learn-harness-zh（https://github.com/xipantingfeng/learn-harness-zh）
+- 品牌：知学；全名：知学·学习助手
+- 许可证：AGPL-3.0-only（与上游一致；见 LICENSE）
+
+本分支相对上游的修改（非穷举）
+------------------------------
+1. 界面文案、设置各分区、菜单、插件、知识链、状态提示、错误提示尽可能**汉化为中文**；
+   品牌名（ChatGPT、Claude Code、DeepSeek、Deepgram、Tavily、OpenAI、GitHub、Pi 等）与
+   **模型提示词正文保持英文原文**，以免改变 AI 行为；听写语言等按各语言自身写法（endonym）显示。
+2. 独立中文桌面包：程序名 知学·学习助手、知学.exe；安装目录与数据目录与原版隔离；
+   窗口标题、菜单、语言 --lang=zh-CN；**自动更新关闭**。
+3. 首页示例提示改为 **4 个中文短提示、单行显示**，点提示填入输入框（同步 ref，可直接发送）。
+4. 回答级快捷操作仅在已有助手文本后显示；预填不自动发送。
+5. 计划确认卡（可加性确认卡，非硬闸门），仅最新计划显示。
+6. 中文全局错误页 app/global-error.tsx。
+7. 最小 i18n：lib/i18n.ts + messages/zh-CN.json + t()（代表性迁移，非完整 i18n）。
+8. 工程化：tsc 0 errors、next build exit 0、CI .github/workflows/ci.yml。
+9. 未实现（如实标注）：#2 硬闸门、#3 错题/困惑回顾 + FSRS 队列、#4 完整 i18n + 一键中/英切换。
+
+商标
+----
+AGPL-3.0 不授予商标权。本分支不是 LearnHarness 官方，不得声称与上游有隶属关系，
+不得使用上游商标/logo 暗示官方授权。上游名称仅用于说明来源。
+
+源码
+----
+完整对应源码：本仓库（AGPL-3.0）。分发安装包时请同时提供源码或书面提供方式，见 LICENSE。
+
+第三方
+------
+依赖与插件的版权归各自所有者，保留各自许可证文件；品牌名仅用于指代对应产品。
