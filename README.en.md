@@ -62,7 +62,7 @@ Future teaching sessions read the graph rather than starting from scratch, and p
 
 Choose your models, then start a session with what you want to understand. Provider API keys, desktop subscription connections, an installed Claude Code CLI, or a custom OpenAI-compatible endpoint (including a local model server) are supported. Dictation and web search use separate service keys.
 
-Model and key settings live in one place, with Chinese labels and status throughout the interface:
+Model and reasoning settings live in one place, with Chinese labels and status throughout the interface:
 
 ![Settings view](docs/assets/zh/settings.png)
 
