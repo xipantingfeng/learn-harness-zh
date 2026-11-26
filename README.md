@@ -1,105 +1,79 @@
 # 知学 · 学习助手
 
-> **learn-harness-zh** · 基于 [LearnHarness 0.7.0](https://github.com/amosblomqvist/learnharness) 的社区中文本地化版（**非官方**）
->
-> 品牌名：**知学**；全名：**知学·学习助手**。许可证：**AGPL-3.0-only**。上游作者与署名见 [NOTICE](NOTICE) 与 [README.upstream.md](README.upstream.md)。
+<p align="center">
+  <img src="docs/assets/zh/home.png" alt="知学首页" width="900">
+</p>
 
-一句话定位：一个**有记忆的 AI 老师**——根据你当前的理解和目标规划课程，用你的回答和思考决定下一步教什么，在教学、练习之间持续构建并更新一张**本地知识图谱**。
+<p align="center">
+  <strong>一个会记住你学过什么的 AI 老师。</strong><br>
+  <a href="https://github.com/amosblomqvist/learnharness">基于 LearnHarness 0.7.0</a> · 非官方中文本地化版 · <a href="LICENSE">AGPL-3.0</a>
+</p>
 
-本仓库做的事，是在保留 LearnHarness 全部能力的前提下，把界面与提示**尽可能完整汉化为中文**，并做了一层**独立中文桌面包**（品牌、安装目录、数据目录隔离、关闭自动更新）。模型提示词正文保持英文原文，以免改变 AI 行为；品牌名（ChatGPT、Claude、DeepSeek、Deepgram、Tavily 等）不翻译。
+<p align="center">
+  <a href="https://github.com/xipantingfeng/learn-harness-zh/releases/latest">下载 Windows 版</a> ·
+  <a href="#我做了什么">我做了什么</a> ·
+  <a href="#还没做完的">还没做完的</a> ·
+  <a href="#构建">构建</a> ·
+  <a href="#许可与署名">许可与署名</a>
+</p>
 
----
+我是知学。我做的事情很简单：**用 AI 帮你学懂一个东西，并且记住你已经懂了什么。** 我会先探查你当前的理解，再规划课程；你回答之后，我根据你的思考决定下一步是继续讲、换个例子，还是出一道题。你学到的东西会沉淀进一张只保存在本机的知识图谱，下次接着用。
 
-## 这是什么 / 不是什么
+这个仓库是我基于开源项目 **LearnHarness 0.7.0** 做的**非官方中文分支**：我把界面汉化、改成了中文品牌和独立的 Windows 桌面程序，并保留原作者署名与 AGPL 许可证。上游作者是 Amos Blomqvist，如果我的工作对你有帮助，也请给 [上游](https://github.com/amosblomqvist/learnharness) 点个 Star。
 
-**是**：LearnHarness 0.7.0 的**非官方中文社区分支**，保留原作者与许可证，同样开源。
-**不是**：LearnHarness 官方项目、官方中文版，也不隶属于上游；不要把它当作上游的官方发行。
+## 下载与运行
 
-## 与上游 LearnHarness 的关系
-
-- 上游：[amosblomqvist/learnharness](https://github.com/amosblomqvist/learnharness)（AGPL-3.0）。如果本项目对你有帮助，**请也给上游点个 Star**。
-- 本分支：[xipantingfeng/learn-harness-zh](https://github.com/xipantingfeng/learn-harness-zh)。
-- 同步策略与版本映射见 [UPSTREAM.md](UPSTREAM.md)；每次发布说明“基于上游哪个版本 + 本分支改了什么”，见 [CHANGELOG.md](CHANGELOG.md)。
-
-## 主要差异（相对上游 0.7.0）
-
-| 维度 | 上游 LearnHarness | 本分支 知学·学习助手 |
+| 平台 | 怎么拿 | 怎么跑 |
 | --- | --- | --- |
-| 界面语言 | 英文（无完整 i18n） | **尽可能全中文**；模型提示词正文保留英文；品牌名不翻译 |
-| 品牌 / 安装 | LearnHarness | 品牌「知学」，全名「知学·学习助手」，`知学.exe` |
-| 数据目录 | 原目录 | `%APPDATA%\知学`，**与原版隔离** |
-| 自动更新 | 可能有 | **默认关闭** |
-| 首页示例提示 | 英文示例 | **4 个中文提示，单行显示**，点提示即填入输入框 |
-| 回答级快捷操作 | 部分 | 老师说过话后出现（再简单点/再详细点/换个例子/我没懂/总结一下/考考我），预填不自动发送 |
-| 计划确认 | — | 计划生成后出**确认卡**（确认，开始教学 / 修改计划），仅最新计划显示 |
-| 全局错误 | 默认 | 中文错误页 `app/global-error.tsx` |
-| 工程化 | — | `tsc` 0 errors、`next build` exit 0、CI（`.github/workflows/ci.yml`） |
-| 本地化机制 | — | `lib/i18n.ts` + `messages/zh-CN.json` + `t()`（#4-lite，**非完整 i18n**） |
+| **Windows x64（推荐）** | 到 [Releases](https://github.com/xipantingfeng/learn-harness-zh/releases/latest) 下载 `知学-Windows-x64.zip` | 解压后**双击 `知学.exe`**，无需安装、无需 Node、无需联网下载依赖 |
+| Windows x64（安装版） | Release 中的安装包（若提供） | 双击安装；安装目录 `%LOCALAPPDATA%\Programs\知学` |
+| 源码 | `git clone https://github.com/xipantingfeng/learn-harness-zh.git` | 见下方 [构建](#构建) |
 
-## 功能
+- 我**关闭了自动更新**：程序不会偷偷替换自己。
+- 学习数据、会话、密钥都在 `%APPDATA%\知学`，**和原版 LearnHarness 完全隔离**。
+- 首页输入框下方有 4 个中文示例提示，**同一行显示**；点一下填进输入框，直接回车就能开始。
 
-与上游一致：自适应教学、练习模式、会话与**持久知识图谱**、模型与提供商设置（多提供商 / 自定义 OpenAI 兼容 / Claude Code / 订阅）、插件系统、交互式演示、可视化、PDF 阅读与导入、听写、FSRS 记忆卡片、推理可视化等。详细文档见 [docs/](docs)。
+## 我做了什么
 
-## 快速开始
+- **中文界面**：设置、菜单、插件、知识链、出题与作答卡片、听写、状态提示、错误页……尽量都译成中文；听写语言按各语言自身写法显示。
+- **中文品牌**：程序叫「知学·学习助手」，可执行文件 `知学.exe`，窗口标题、菜单、数据目录都是中文/独立命名。
+- **首页示例提示**：4 个更具体的中文提示，单行显示；点提示会同步输入框状态，按「开始会话」真的能发出去（修过一个只改文字没同步 ref 的 bug）。
+- **回答快捷操作**：老师说过话之后才出现「再简单点 / 再详细点 / 换个例子 / 我没懂 / 总结一下 / 考考我」，点一下预填进输入框，不自动发送。
+- **计划确认卡**：计划生成后给一张「确认，开始教学 / 修改计划」的卡片，只挂在最新计划上；已回复或生成中不显示。
+- **中文错误页**：页面加载失败时给中文提示和日志位置，而不是白屏。
+- **独立 Windows 程序**：复制 Electron 外壳并改名、强制 `zh-CN`、断掉更新链；Next standalone 构建产物完整自包含。
+- **工程化**：`tsc --noEmit` 0 errors、`next build` 成功；CI 配置见 `.github/workflows/`。
 
-### Windows 桌面包（推荐）
+我**故意保留英文**的部分：ChatGPT、Claude Code、DeepSeek、Deepgram、Tavily、OpenAI、GitHub、Pi 等品牌名，以及**发给模型的提示词正文**——改那些会改变 AI 的行为。模型输入标签（`Your thinking`、`Tutor quote` 引用格式）也保持原样，避免和已有数据失配。
 
-从本仓库 **Releases** 下载 `知学` 安装包（若尚未发布构建，见“开发与构建”自行构建）：
+## 还没做完的
 
-- 安装目录：`C:\Users\<你>\AppData\Local\Programs\知学`
-- 数据目录：`%APPDATA%\知学`
-- 数据与模型密钥**仅保存在本机**，不会上传到本项目。
+我不想把没做的说成做了，所以明说：
 
-### 从源码运行（跨平台）
+- **计划确认硬闸门**：现在是「确认卡」，不是让 agent 在 `plan_init` 前真正停下等确认。
+- **错题/困惑回顾 + FSRS 复习队列**：需要新数据字段和事件契约，还没接。
+- **完整 i18n + 一键中/英切换**：目前是源码级中文 + 少量 `t()` / `messages/zh-CN.json`，不是全量 key 化。
+- **macOS / Linux 打包**：我的打包和验证以 Windows 为主，源码跨平台遵循上游。
+
+## 构建
 
 ```bash
-# Node.js 24 + npm
 git clone https://github.com/xipantingfeng/learn-harness-zh.git
 cd learn-harness-zh
 npm install
-npm run plugins:setup        # 安装插件源码依赖（需要 plugins/，见下）
+npm run plugins:setup        # 准备 plugins/ 里的插件源码依赖
+npm run typecheck
+npm test
 npm run build
-npm start                    # 默认 http://localhost:3000
-# Windows 桌面模式
-npm run desktop:dev
+npm start                    # http://localhost:3000
+npm run desktop:dev          # 桌面开发模式
 ```
 
-> 本分支的中文包是**源码级汉化**：不是对编译产物做文本替换，修改都在 `app/ components/ src/ lib/ messages/ asar-src/` 里。
+Windows 独立包的固定同步流程（static/public → standalone、补 `@shikijs`、删 `.next/standalone/dist`、同步 `dist` 和安装目录）写在 [`docs/zh-CN/build-windows.md`](docs/zh-CN/build-windows.md)。
 
-## 数据与隐私
+## 许可与署名
 
-- 所有学习记录、知识图谱、会话**保存在本地数据目录**（`%APPDATA%\知学`）。
-- 模型密钥保存在本机 `auth.json`；**不要提交 `auth.json`、`.env`、`data/`、日志**（`.gitignore` 已排除）。
-- 与你所选模型提供商之间的网络请求遵循其自身条款；本项目不内置遥测。
-- **自动更新已关闭**，不会偷偷拉取新版本。
-
-## 已知限制 / 路线图（如实说明）
-
-以下相对“完全体”仍未完成，**不要当作已实现**：
-
-- **#2 计划确认硬闸门**：当前是“确认卡 + 仅最新计划显示”，并非让 agent 在 `plan_init` 前真正停下等确认（需改 `plan_init` + 事件流，且需真实会话验证）。
-- **#3 错题/困惑回顾 + FSRS 队列**：需要新增数据字段/事件契约并接记忆卡片。
-- **#4 完整 i18n + 一键中/英切换**：目前是“源码级中文 + 少量 `t()`”；需全量 key 化 + `messages/en.json` + 语言状态的大规模重构。
-- **Windows 中文包优先**：本分支的打包与验证以 Windows 为主；源码跨平台构建遵循上游。
-
-## 开发与构建
-
-```bash
-npm install
-npm run plugins:setup        # plugins/ 是上游源码；构建 core-plugins 需要它
-npm run typecheck            # tsc --noEmit
-npm run lint
-npm test                     # tsx --test
-npm run build                # plugins + next build
-```
-
-Windows 独立桌面构建（本分支额外约定）：见 [docs/zh-CN/build-windows.md](docs/zh-CN/build-windows.md)。
-CI：`.github/workflows/ci.yml`。
-
-## 许可证与署名
-
-- **AGPL-3.0-only**。保留 `LICENSE`、原作者版权与本分支修改说明，见 [NOTICE](NOTICE)。
-- 本分支**已修改**上游代码；分发安装包或修改版时，须按 AGPL 提供**完整对应源码**，并保留许可证与署名。
-- AGPL 不授予商标权；请不要声称本分支是 LearnHarness 官方，也不要用上游 logo 冒充官方。
-- 上游文档保留在 [README.upstream.md](README.upstream.md) 与 [docs/](docs)。
-- 插件等子项目可能有各自许可证（见各子目录 LICENSE）。
+- 我以 **AGPL-3.0-only** 发布，保留上游 `LICENSE`、原作者署名，并在 [`NOTICE`](NOTICE) 列出我的修改。
+- 上游关系、同步策略、版本映射写在 [`UPSTREAM.md`](UPSTREAM.md)；改动记录写在 [`CHANGELOG.md`](CHANGELOG.md)；上游原始 README 保留在 [`README.upstream.md`](README.upstream.md)。
+- AGPL 不授予商标权。我不是 LearnHarness 官方，也不使用上游 logo 冒充官方；分发安装包或修改版时请提供完整对应源码。
+- 插件等子目录可能有各自的许可证文件，保留各自版权。

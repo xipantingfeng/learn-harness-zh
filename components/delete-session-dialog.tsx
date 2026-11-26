@@ -12,7 +12,7 @@ export const TRACES_COPY = {
 	testid: "delete-traces",
 	checkbox: "delete-traces-checkbox",
 	title: "同时移除它的图谱痕迹",
-	body: "This session’s topics, links, and events leave the graph too. Topics other sessions or imported notes also cover survive; topics only this session created are removed entirely.",
+	body: "这个会话的主题、链接和事件也会从图谱中移除。其他会话或导入笔记也涉及的主题会保留；只有这个会话创建的主题会被完全删除。",
 };
 
 export interface DeleteDialogCopy {
@@ -26,8 +26,8 @@ export interface DeleteDialogCopy {
 export const SESSION_DELETE_COPY: DeleteDialogCopy = {
 	label: "删除会话",
 	testid: "delete-session-dialog",
-	heading: "Delete session?",
-	body: "This permanently removes the session — its messages, background jobs, and extraction records. Everything it added to the graph stays unless you check below. This cannot be undone.",
+	heading: "删除会话？",
+	body: "这将永久删除该会话——包括它的消息、后台任务和提取记录。除非勾选下方选项，否则它添加到知识图谱的内容会保留。此操作无法撤销。",
 	traces: TRACES_COPY,
 };
 
@@ -36,18 +36,18 @@ const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : 
 /** The folder Delete's wording (owner, 2026-11-18): the session dialog's
  *  shape, plural, saying what goes and where notes move. */
 export function folderDeleteCopy(input: { sessions: number; subfolders: number; notes: number; parentName: string | null }): DeleteDialogCopy {
-	const what = [count(input.sessions, "session", "sessions"), ...(input.subfolders ? [count(input.subfolders, "subfolder", "subfolders")] : [])].join(" and ");
+	const what = [count(input.sessions, "个会话", "个会话"), ...(input.subfolders ? [count(input.subfolders, "个子文件夹", "个子文件夹")] : [])].join(" 和 ");
 	const notes = input.notes
-		? ` ${count(input.notes, "imported notes file", "imported notes files")} inside ${input.notes === 1 ? "moves" : "move"} to ${input.parentName === null ? "the top level" : `“${input.parentName}”`}.`
+		? ` 其中的 ${count(input.notes, "个导入笔记文件", "个导入笔记文件")}${input.notes === 1 ? "移动" : "移动"}到${input.parentName === null ? "顶层" : `“${input.parentName}”`}。`
 		: "";
 	return {
 		label: "删除文件夹",
 		testid: "delete-folder-dialog",
-		heading: "Delete folder?",
-		body: `This permanently removes the folder and the ${what} inside — the sessions’ messages, background jobs, and extraction records. Everything they added to the graph stays unless you check below.${notes} This cannot be undone.`,
+		heading: "删除文件夹？",
+		body: `这将永久删除该文件夹及其中的 ${what}——包括这些会话的消息、后台任务和提取记录。除非勾选下方选项，否则它们添加到知识图谱的内容会保留。${notes} 此操作无法撤销。`,
 		traces: {
 			title: "同时移除它们的图谱痕迹",
-			body: "These sessions’ topics, links, and events leave the graph too. Topics other sessions or imported notes also cover survive; topics only these sessions created are removed entirely.",
+			body: "这些会话的主题、链接和事件也会从图谱中移除。其他会话或导入笔记也涉及的主题会保留；只有这些会话创建的主题会被完全删除。",
 		},
 	};
 }
@@ -119,13 +119,13 @@ export function DeleteSessionDialog({
 			if (!res.ok) {
 				// 409 (turn/jobs running) and 503 (extraction winding down) are
 				// both retryable — keep the dialog open, show the server's line.
-				setFailure({ code: body.code ?? "error", error: body.error ?? `Delete failed (${res.status})` });
+				setFailure({ code: body.code ?? "error", error: body.error ?? `删除失败（${res.status}）` });
 				setBusy(false);
 				return;
 			}
 			onDeleted(chat.id, mode, body.graphRevision ?? 0);
 		} catch {
-			setFailure({ code: "network", error: "Delete failed — network error. Try again." });
+			setFailure({ code: "network", error: "删除失败：网络错误，请重试。" });
 			setBusy(false);
 		}
 	};
@@ -248,7 +248,7 @@ export function DeleteSessionBody({
 					disabled={busy}
 					className="rounded-sm border border-destructive/50 bg-destructive/10 px-3 py-1.5 text-xs text-destructive transition-colors hover:bg-destructive/20 disabled:opacity-40"
 				>
-					{busy ? "Deleting…" : "Delete"}
+					{busy ? "正在删除…" : "删除"}
 				</button>
 			</div>
 		</div>
@@ -296,13 +296,13 @@ export function DeleteFolderDialog({
 				return;
 			}
 			if (!res.ok) {
-				setFailure({ code: body.code ?? "error", error: body.error ?? `Delete failed (${res.status})` });
+				setFailure({ code: body.code ?? "error", error: body.error ?? `删除失败（${res.status}）` });
 				setBusy(false);
 				return;
 			}
 			onDeleted({ deletedChatIds: body.deletedChatIds ?? [], graphRevision: body.graphRevision ?? 0 });
 		} catch {
-			setFailure({ code: "network", error: "Delete failed — network error. Try again." });
+			setFailure({ code: "network", error: "删除失败：网络错误，请重试。" });
 			setBusy(false);
 		}
 	};

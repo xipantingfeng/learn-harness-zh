@@ -212,7 +212,7 @@ export function CoverageMenuBody({
 				disabled={busy || complete}
 				className="flex items-center justify-center rounded-lg border px-2 py-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:opacity-40 disabled:hover:bg-transparent"
 			>
-				{busy ? "Running" : "Extract"}
+				{busy ? "运行中" : "提取"}
 			</button>
 		</div>
 	);
