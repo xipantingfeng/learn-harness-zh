@@ -48,3 +48,6 @@ README-使用与重建.txt
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Release artifacts (uploaded as GitHub Release assets, not source)
+release/
