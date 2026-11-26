@@ -25,7 +25,7 @@
 
 | 平台 | 怎么拿 | 怎么跑 |
 | --- | --- | --- |
-| **Windows x64（推荐）** | 到 [Releases](https://github.com/xipantingfeng/learn-harness-zh/releases/latest) 下载 `知学-Windows-x64.zip` | 解压后**双击 `知学.exe`**，无需安装、无需 Node、无需联网下载依赖 |
+| **Windows x64（推荐）** | 到 [Releases](https://github.com/xipantingfeng/learn-harness-zh/releases/latest) 下载 `zhixue-0.7.0-zh.1-Windows-x64.zip` | 解压后**双击 `知学.exe`**，无需安装、无需 Node、无需联网下载依赖 |
 | Windows x64（安装版） | Release 中的安装包（若提供） | 双击安装；安装目录 `%LOCALAPPDATA%\Programs\知学` |
 | 源码 | `git clone https://github.com/xipantingfeng/learn-harness-zh.git` | 见下方 [构建](#构建) |
 
