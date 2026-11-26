@@ -1,6 +1,6 @@
 # Windows 独立中文桌面构建（知学·学习助手）
 
-本分支的打包约定：**源码级汉化 + 复制原 Electron 壳（`asar-src`）+ 自有 Next standalone 构建**，不对编译产物做文本替换。
+Windows 包的构建约定：**复制 Electron 壳（`asar-src`）+ Next standalone 构建**，不直接修改编译产物。
 
 > 不要替换编译产物做翻译（曾导致 React error #306）。所有改动在 `app/ components/ src/ lib/ messages/ asar-src/`。
 

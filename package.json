@@ -1,6 +1,6 @@
 {
 	"name": "learn-harness-zh",
-	"version": "0.7.0",
+	"version": "1.0.0",
 	"license": "AGPL-3.0-only",
 	"author": {
 		"name": "Amos Blomqvist",
@@ -21,7 +21,7 @@
 		"url": "https://github.com/xipantingfeng/learn-harness-zh/issues"
 	},
 	"desktopName": "learnharness.desktop",
-	"description": "知学·学习助手：基于 LearnHarness 0.7.0 的非官方中文本地化版（learn-harness-zh）。",
+	"description": "知学：带持久知识图谱的自适应学习应用。",
 	"type": "module",
 	"private": true,
 	"main": "electron/main.cjs",
