@@ -591,7 +591,7 @@ describe("AnsweredCard: the explain variant", () => {
 
 	it("reveals the single committed answer (reasoning inside it) with NO verdict chips", () => {
 		const html = renderToStaticMarkup(<AnsweredCard answer={buildAnswer(explainQD(), { text: "Something about relativity?" })} />);
-		assert.match(html, /Explain/, "labeled as the explain kind");
+		assert.match(html, /讲解/, "labeled as the explain kind");
 		assert.match(html, /参考答案：/);
 		assert.match(html, /luminiferous aether/);
 		assert.match(html, /fringe shift/);
@@ -613,7 +613,7 @@ describe("AnsweredCard: the explain variant", () => {
 describe("probe-phase naming: Probe/Recall labels", () => {
 	it("the dock labels a probe quiz as Probe (composer surface)", () => {
 		const html = renderDock({ toolName: "probe", toolCallId: "p1", input: quizInput as never });
-		assert.match(html, /Probe/, "the chip carries the tool's own name");
+		assert.match(html, /探查/, "the chip carries the tool's own name");
 		assert.ok(!html.includes(">Quiz<"), "not the teach label");
 		assert.match(html, /Which planet is closest to the sun\?/, "still a quiz-shaped card");
 	});
@@ -637,7 +637,7 @@ describe("probe-phase naming: Probe/Recall labels", () => {
 			createdAt: new Date().toISOString(),
 		};
 		const html = renderToStaticMarkup(<AnsweredCard answer={buildAnswer(qd, { values: ["mercury"] }, "probe")} />);
-		assert.match(html, /Probe/);
+		assert.match(html, /探查/);
 		assert.ok(!html.includes(">Quiz<"), "not the teach label");
 	});
 
@@ -667,7 +667,7 @@ describe("probe-phase naming: Probe/Recall labels", () => {
 			createdAt: new Date().toISOString(),
 		};
 		const html = renderToStaticMarkup(<AnsweredCard answer={buildAnswer(oldQD, { text: "A hand-wave." })} />);
-		assert.match(html, /Explain/, "no tool field → the standing kind label");
+		assert.match(html, /讲解/, "no tool field → the standing kind label");
 	});
 });
 
