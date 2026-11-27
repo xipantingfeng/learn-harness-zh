@@ -8,6 +8,10 @@ build/
 *.tsbuildinfo
 *.log
 
+# Example plugin bundles are checked in: build-plugin-authoring.mjs packages them
+!examples/plugins/*/dist/
+!examples/plugins/*/dist/**
+
 # Generated app-owned plugin packages and transactional staging (built by npm run build)
 /core-plugins/
 /.core-plugins-*/
