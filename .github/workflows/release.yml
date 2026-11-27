@@ -27,15 +27,15 @@ jobs:
           - name: Windows x64 (NSIS)
             os: windows-latest
             args: "--win --x64"
-            glob: "dist/*.exe"
+            glob: "dist/*.exe dist/*.yml dist/*.blockmap"
           - name: macOS arm64 + x64 (DMG)
             os: macos-latest
             args: "--mac --arm64 --x64"
-            glob: "dist/*.dmg dist/*.zip"
+            glob: "dist/*.dmg dist/*.zip dist/*.yml dist/*.blockmap"
           - name: Linux x64 (deb + AppImage)
             os: ubuntu-latest
             args: "--linux --x64"
-            glob: "dist/*.deb dist/*.AppImage"
+            glob: "dist/*.deb dist/*.AppImage dist/*.yml dist/*.blockmap"
 
     steps:
       - uses: actions/checkout@v4

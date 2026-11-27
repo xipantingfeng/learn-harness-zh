@@ -31,6 +31,6 @@ shasum -a 256 -c SHA256SUMS.txt   # macOS
 
 ## 说明
 
-- 应用内更新已关闭；升级请手动下载新版本。
+- 启动后会自动检查更新；发现新版本会先询问是否下载，下载完成后再次询问是否安装。程序不会静默替换。
 - 学习数据保存在本机：`%APPDATA%\知学`（Windows）或 `~/.config/zhixue`（Linux/macOS）。
 - 源码：`git clone https://github.com/xipantingfeng/learn-harness-zh.git`，构建见 [docs/zh-CN/build-windows.md](docs/zh-CN/build-windows.md)。

@@ -33,7 +33,7 @@ Zhixue 1.0 uses AI agents to plan lessons from your current understanding and up
 - **Reply-level actions.** Simpler, more detail, another example, “I don't get it”, summarize, quiz me — each prefills the composer and never sends on your behalf.
 - **One-line examples.** Four concrete prompts sit on a single row on the home screen; a click fills the composer and it is ready to send.
 - **Knowledge that carries forward.** Propositions and reasoning chains are stored with links back to their source sessions, so later teaching and practice read the graph instead of starting over.
-- **Local first.** Chats, graph, settings, and keys stay on your machine. In-app updates are disabled by default.
+- **Local first.** Chats, graph, settings, and keys stay on your machine. Updates are prompt-first: the app asks before downloading and again before installing.
 - **Three platforms.** Ready-to-run packages for Windows, Linux, and macOS. On Windows, unpack the archive and run `知学.exe`.
 
 ![Home screen and one-line example prompts](docs/assets/zh/home.png)

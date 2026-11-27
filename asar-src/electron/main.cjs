@@ -500,8 +500,9 @@ function reportUpdateStatus(status, version = null) {
  * explicit false opts out; absent/corrupt/unreadable settings keep updates ON.
  * Re-read for each automatic check so saving the toggle needs no restart. */
 function automaticUpdatesEnabled() {
-	// Private Chinese build: updates are always disabled (our fork is self-contained).
-	return false;
+	// Prompt-first updates: a check runs at startup and every 24h, but nothing
+	// is downloaded or installed until the learner confirms the dialog.
+	return true;
 }
 
 function checkForUpdates({ manual = false } = {}) {
@@ -536,11 +537,6 @@ function installUpdateNow() {
 }
 
 function setupAutoUpdater() {
-	if (true) {
-		log("auto-update: disabled in private Chinese build");
-		reportUpdateStatus("disabled");
-		return;
-	}
 	if (!app.isPackaged) {
 		log("auto-update: dev build — updater disabled");
 		reportUpdateStatus("disabled");
@@ -558,8 +554,11 @@ function setupAutoUpdater() {
 		autoUpdater.setFeedURL({ provider: "generic", url: feed });
 		log(`auto-update: LH_UPDATE_FEED override → ${feed}`);
 	}
-	autoUpdater.autoDownload = true;
-	autoUpdater.autoInstallOnAppQuit = true;
+	// Prompt-first: never download silently. The dialog below starts the
+	// download only after the learner confirms; install likewise needs a
+	// second confirmation.
+	autoUpdater.autoDownload = false;
+	autoUpdater.autoInstallOnAppQuit = false;
 	// Route every updater log line through the shell's own log (userData/
 	// logs/main.log) — feed failures must be diagnosable after the fact.
 	autoUpdater.logger = {
@@ -569,11 +568,57 @@ function setupAutoUpdater() {
 		error: (m) => log(`updater error: ${m}`),
 	};
 	autoUpdater.on("checking-for-update", () => reportUpdateStatus("checking"));
-	autoUpdater.on("update-available", (info) => reportUpdateStatus("downloading", info?.version));
+	autoUpdater.on("update-available", (info) => {
+		const version = typeof info?.version === "string" ? info.version : null;
+		reportUpdateStatus("available", version);
+		const parent = BrowserWindow.getAllWindows()[0];
+		const ask = dialog.showMessageBox(parent, {
+			type: "info",
+			title: "发现新版本",
+			message: `知学 ${version ?? "新版本"} 已发布`,
+			detail: "是否现在下载更新？下载完成后会再次询问是否安装。",
+			buttons: ["下载更新", "稍后"],
+			defaultId: 0,
+			cancelId: 1,
+		}).catch((err) => {
+			log(`update prompt failed: ${err?.message ?? err}`);
+			return { response: 1 };
+		});
+		void ask.then(({ response }) => {
+			if (response !== 0) {
+				log("update: learner deferred download");
+				return;
+			}
+			reportUpdateStatus("downloading", version);
+			log(`update: downloading ${version ?? ""}`);
+			autoUpdater.downloadUpdate().catch((err) => {
+				log(`update download failed: ${err?.message ?? err}`);
+				reportUpdateStatus("error");
+			});
+		});
+	});
 	autoUpdater.on("update-not-available", () => reportUpdateStatus("up-to-date"));
 	autoUpdater.on("update-downloaded", (info) => {
-		log(`update downloaded: ${info?.version} — banner shown`);
-		reportUpdateStatus("downloaded", info?.version);
+		const version = typeof info?.version === "string" ? info.version : null;
+		log(`update downloaded: ${version ?? ""}`);
+		reportUpdateStatus("downloaded", version);
+		const parent = BrowserWindow.getAllWindows()[0];
+		const ask = dialog.showMessageBox(parent, {
+			type: "info",
+			title: "更新已下载",
+			message: `知学 ${version ?? "新版本"} 已准备好`,
+			detail: "是否立即安装并重启？选择“稍后”可在下次退出时安装。",
+			buttons: ["立即安装", "稍后"],
+			defaultId: 0,
+			cancelId: 1,
+		}).catch((err) => {
+			log(`update install prompt failed: ${err?.message ?? err}`);
+			return { response: 1 };
+		});
+		void ask.then(({ response }) => {
+			if (response === 0) installUpdateNow();
+			else autoUpdater.autoInstallOnAppQuit = true;
+		});
 	});
 	autoUpdater.on("error", (err) => {
 		log(`updater error: ${err?.message ?? err}`);

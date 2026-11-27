@@ -188,4 +188,4 @@ publish:
     owner: xipantingfeng
     repo: learn-harness-zh
     # Three CI jobs contribute assets; the release workflow uploads them.
-    releaseType: draft
+    releaseType: release
