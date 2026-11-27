@@ -9,8 +9,8 @@
 #   - signed + notarized since 2026-10-08 (Developer ID Application cert in
 #     the login keychain; notary credentials in the LH_NOTARY keychain
 #     profile; the profile + team env vars are baked into desktop:dist).
-appId: com.learnharness.LearnHarness
-productName: LearnHarness
+appId: com.zhixue.app
+productName: 知学
 directories:
   output: dist
 # Icons (owner ruling, 2026-10-13) — per-platform sources in build/:
@@ -105,7 +105,8 @@ mac:
   extraResources:
     - from: electron/server-title-guard.cjs
       to: server-title-guard.cjs
-  icon: build/icon.icon
+  icon: build/icon.icns
+  artifactName: "zhixue-${version}-${arch}.${ext}"
   # zip rides next to dmg (flipped 2026-10-08): Squirrel.Mac — Electron's
   # macOS auto-updater — installs from ZIP and cannot read DMGs. DMG is
   # for humans; ZIP + blockmap are the updater's payload.
@@ -120,22 +121,18 @@ mac:
   # every non-en .lproj from the frameworks (the STT/mic entitlements
   # don't depend on locales). Revisit only if localization ever lands.
   electronLanguages:
+    - zh-CN
     - en
   category: public.app-category.education
-  # Laid for the STT milestone (researcher-verified): the TCC mic prompt
-  # reads this string; macOS asks regardless of Electron's own handlers.
+  # macOS asks for the microphone when dictation is used.
   extendInfo:
-    NSMicrophoneUsageDescription: "LearnHarness uses the microphone only for speech-to-text input into your sessions."
+    NSMicrophoneUsageDescription: "知学仅在口述输入时使用麦克风。"
   hardenedRuntime: true
   entitlements: build/entitlements.mac.plist
-  # Signing + notarization (flipped 2026-10-08): identity auto-detects the
-  # Developer ID Application certificate from the login keychain;
-  # notarize: true makes electron-builder sign → submit to Apple's notary
-  # service → staple the ticket, all inside this one build (credentials
-  # via the LH_NOTARY keychain profile, env baked into desktop:dist).
-  # Adds minutes per build (Apple's scan queue). Verification battery:
-  # codesign --verify --deep / spctl --assess / stapler validate.
-  notarize: true
+  # Unsigned builds: no Developer ID / notary credentials are configured.
+  # A signed + notarized DMG needs an Apple Developer ID certificate and
+  # APPLE_ID / APPLE_TEAM_ID / app-specific password in the build secrets.
+  notarize: false
 dmg:
   title: "${productName} ${version}"
   # Owner artwork: 540×380 at 1×; the sibling background@2x.png is
@@ -157,7 +154,7 @@ win:
     - target: nsis
       arch:
         - x64
-  artifactName: "${productName}-${version}-${arch}-setup.${ext}"
+  artifactName: "zhixue-${version}-${arch}-setup.${ext}"
   # Unsigned Windows release (owner ruling): preserve icon/version metadata,
   # skip signing, and do not require a publisher signature for updates.
   signExecutable: false
@@ -174,7 +171,7 @@ linux:
     - target: deb
       arch:
         - x64
-  artifactName: "${productName}-${version}-${arch}.${ext}"
+  artifactName: "zhixue-${version}-${arch}.${ext}"
   category: Education
   # Match Electron's app_id/WM_CLASS to the installed desktop launcher.
   syncDesktopName: true
@@ -188,7 +185,7 @@ publish:
   # would be a leak. desktop:dist passes no --publish flag, so builds never
   # upload; publishing happens at release time (GH_TOKEN + --publish).
   - provider: github
-    owner: amosblomqvist
-    repo: learnharness
-    # All three CI jobs contribute assets; only the owner publishes it.
+    owner: xipantingfeng
+    repo: learn-harness-zh
+    # Three CI jobs contribute assets; the release workflow uploads them.
     releaseType: draft

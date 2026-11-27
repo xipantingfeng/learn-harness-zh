@@ -1,0 +1,72 @@
+name: Build installers
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  installers:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: false
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows x64 (NSIS)
+            os: windows-latest
+            args: "--win --x64"
+            glob: "dist/*.exe"
+          - name: macOS arm64 + x64 (DMG)
+            os: macos-latest
+            args: "--mac --arm64 --x64"
+            glob: "dist/*.dmg dist/*.zip"
+          - name: Linux x64 (deb + AppImage)
+            os: ubuntu-latest
+            args: "--linux --x64"
+            glob: "dist/*.deb dist/*.AppImage"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install plugin source dependencies
+        run: npm run plugins:setup
+
+      - name: Build Next app and plugins
+        run: npm run build
+
+      - name: Prepare standalone server payload
+        run: node scripts/build-server.mjs
+
+      - name: Package ${{ matrix.name }}
+        run: npx electron-builder ${{ matrix.args }} --publish never
+
+      - name: Upload assets to the release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" --title "知学 $TAG" --generate-notes
+          fi
+          for f in ${{ matrix.glob }}; do
+            if [ -f "$f" ]; then
+              gh release upload "$TAG" "$f" --clobber
+            fi
+          done

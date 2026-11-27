@@ -25,6 +25,8 @@
  */
 
 const { app, BrowserWindow, Menu, ipcMain, nativeTheme, session, shell, dialog } = require("electron");
+// Private Chinese build: force the Chromium/Electron UI locale to Simplified Chinese.
+app.commandLine.appendSwitch("lang", "zh-CN");
 const { pickAttachmentPath } = require("./attachment-picker.cjs");
 const { createChatGPT, fileStore } = require("./chatgpt.cjs");
 const { attachChatGPTChild, trustedSender, chatGPTControl } = require("./chatgpt-ipc.cjs");
@@ -43,7 +45,8 @@ const path = require("node:path");
 // renderer owns the number; this is the IPC widen target).
 const SIDEBAR_AUTOCLOSE = 928;
 
-const PRODUCT_NAME = "LearnHarness";
+const PRODUCT_NAME = "知学·学习助手";
+const DATA_NAME = "知学";
 
 // APP NAME → userData (owner, 2026-10-10): the Application Support dir is
 // exactly "LearnHarness" in dev AND packaged. Packaged Electron would
@@ -51,7 +54,7 @@ const PRODUCT_NAME = "LearnHarness";
 // "learnharness"), and productName metadata alone doesn't reach app.name.
 // Must run before the LH_DEV_URL suffix below — dev becomes
 // "LearnHarness-dev".
-app.setName(PRODUCT_NAME);
+app.setName(DATA_NAME);
 const AUTH_FILE = () => path.join(app.getPath("userData"), "auth.json");
 const DATA_DIR = () => path.join(app.getPath("userData"), "data");
 
@@ -497,12 +500,8 @@ function reportUpdateStatus(status, version = null) {
  * explicit false opts out; absent/corrupt/unreadable settings keep updates ON.
  * Re-read for each automatic check so saving the toggle needs no restart. */
 function automaticUpdatesEnabled() {
-	try {
-		const settings = JSON.parse(fs.readFileSync(path.join(DATA_DIR(), "settings.json"), "utf8"));
-		return settings?.general?.autoUpdate !== false;
-	} catch {
-		return true;
-	}
+	// Private Chinese build: updates are always disabled (our fork is self-contained).
+	return false;
 }
 
 function checkForUpdates({ manual = false } = {}) {
@@ -537,6 +536,11 @@ function installUpdateNow() {
 }
 
 function setupAutoUpdater() {
+	if (true) {
+		log("auto-update: disabled in private Chinese build");
+		reportUpdateStatus("disabled");
+		return;
+	}
 	if (!app.isPackaged) {
 		log("auto-update: dev build — updater disabled");
 		reportUpdateStatus("disabled");
@@ -586,7 +590,7 @@ function checkForUpdatesFromMenu() {
 			if (win.isMinimized()) win.restore();
 			win.focus();
 			const openSettings = () => {
-				try { win.webContents.send("lh:open-settings", "general"); } catch { /* window closed */ }
+				try { win.webContents.send("lh:open-settings", "agent"); } catch { /* window closed */ }
 			};
 			if (win.webContents.isLoadingMainFrame()) win.webContents.once("did-finish-load", openSettings);
 			else openSettings();
@@ -621,7 +625,7 @@ function installMenu() {
 			submenu: [
 				{ role: "about" },
 				// Manual checks report their result in Settings → General.
-				{ label: "Check for Updates…", click: () => checkForUpdatesFromMenu() },
+				{ label: "检查更新…", click: () => checkForUpdatesFromMenu() },
 				{ type: "separator" },
 				{ role: "hide" },
 				{ role: "hideOthers" },
@@ -641,17 +645,17 @@ function installMenu() {
 				// traffic lights. The renderer's --lh-zoom depends on
 				// hearing every change.
 				{
-					label: "Actual Size",
+					label: "实际大小",
 					accelerator: "CommandOrControl+0",
 					click: () => applyZoom(BrowserWindow.getAllWindows()[0], 1),
 				},
 				{
-					label: "Zoom In",
+					label: "放大",
 					accelerator: "CommandOrControl+Plus",
 					click: () => zoomStep(BrowserWindow.getAllWindows()[0], +1),
 				},
 				{
-					label: "Zoom Out",
+					label: "缩小",
 					accelerator: "CommandOrControl+-",
 					click: () => zoomStep(BrowserWindow.getAllWindows()[0], -1),
 				},
