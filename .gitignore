@@ -5,6 +5,9 @@ node_modules/
 .next/
 dist/
 build/
+# electron-builder icons / entitlements / DMG background are source assets
+!build/
+!build/**
 *.tsbuildinfo
 *.log
 
