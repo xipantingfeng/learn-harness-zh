@@ -65,10 +65,13 @@ Future teaching sessions read the graph rather than starting from scratch, and p
 
 | Platform | File | Install |
 | --- | --- | --- |
-| Windows x64 | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | Unpack and run `知学.exe`; no installer needed |
-| Linux x64 | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
-| macOS Apple Silicon | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) | Unpack and open `知学.app`; run `安装.command` if needed |
-| macOS Intel | [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | Same as above |
+| Windows x64 (installer) | [zhixue-1.0.0-x64-setup.exe](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x64-setup.exe) | Run the installer; installs to `%LOCALAPPDATA%\Programs\知学` |
+| Windows x64 (portable) | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | Unpack and run `知学.exe`; no install needed |
+| Linux x64 (installer) | [zhixue-1.0.0-amd64.deb](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-amd64.deb) / [zhixue-1.0.0-x86_64.AppImage](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x86_64.AppImage) | `sudo apt install ./zhixue-1.0.0-amd64.deb`, or chmod +x the AppImage |
+| Linux x64 (portable) | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
+| macOS Apple Silicon (installer) | [zhixue-1.0.0-arm64.dmg](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-arm64.dmg) | Open the DMG and drag `知学.app` to Applications |
+| macOS Intel (installer) | [zhixue-1.0.0-x64.dmg](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x64.dmg) | Same as above |
+| macOS (portable) | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) / [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | Unpack and open `知学.app`; run `安装.command` if needed |
 | Checksums | [SHA256SUMS.txt](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/SHA256SUMS.txt) | `sha256sum -c SHA256SUMS.txt` |
 
 Choose your models, then start a session with what you want to understand. Provider API keys, desktop subscription connections, an installed Claude Code CLI, or a custom OpenAI-compatible endpoint (including a local model server) are supported. Dictation and web search use separate service keys.

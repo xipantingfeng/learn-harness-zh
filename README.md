@@ -64,10 +64,13 @@
 
 | 平台 | 文件 | 安装方式 |
 | --- | --- | --- |
-| Windows x64 | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | 解压后双击 `知学.exe`，无需安装 |
-| Linux x64 | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
-| macOS Apple Silicon | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) | 解压打开 `知学.app`；必要时运行 `安装.command` |
-| macOS Intel | [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | 同上 |
+| Windows x64（推荐） | [zhixue-1.0.0-x64-setup.exe](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x64-setup.exe) | 双击安装，一路下一步；安装到 `%LOCALAPPDATA%\Programs\知学` |
+| Windows x64（便携） | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | 解压后双击 `知学.exe`，无需安装 |
+| Linux x64（推荐） | [zhixue-1.0.0-amd64.deb](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-amd64.deb) 或 [zhixue-1.0.0-x86_64.AppImage](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x86_64.AppImage) | `sudo apt install ./zhixue-1.0.0-amd64.deb`；AppImage 加执行权限后运行 |
+| Linux x64（便携） | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
+| macOS Apple Silicon（推荐） | [zhixue-1.0.0-arm64.dmg](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-arm64.dmg) | 打开 DMG，把 `知学.app` 拖入 Applications |
+| macOS Intel（推荐） | [zhixue-1.0.0-x64.dmg](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x64.dmg) | 同上 |
+| macOS（便携） | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) / [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | 解压打开 `知学.app`；必要时运行 `安装.command` |
 | 校验 | [SHA256SUMS.txt](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/SHA256SUMS.txt) | `sha256sum -c SHA256SUMS.txt` |
 
 选择模型后，用你想理解的内容开启一个会话。可以使用提供商 API 密钥、桌面版订阅连接、已安装的 Claude Code CLI，或自定义 OpenAI 兼容端点（含本地模型服务）。听写与网页检索需要单独的服务密钥。

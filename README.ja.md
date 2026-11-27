@@ -65,10 +65,13 @@
 
 | プラットフォーム | ファイル | インストール方法 |
 | --- | --- | --- |
-| Windows x64 | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | 解凍して `知学.exe` をダブルクリック |
-| Linux x64 | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
-| macOS Apple Silicon | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) | 解凍して `知学.app` を開く。必要なら `安装.command` を実行 |
-| macOS Intel | [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | 同上 |
+| Windows x64（インストーラー） | [zhixue-1.0.0-x64-setup.exe](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x64-setup.exe) | 実行してウィザードに従う。インストール先は `%LOCALAPPDATA%\Programs\知学` |
+| Windows x64（ポータブル） | [zhixue-1.0.0-Windows-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Windows-x64.zip) | 解凍して `知学.exe` を実行 |
+| Linux x64（インストーラー） | [zhixue-1.0.0-amd64.deb](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-amd64.deb) / [zhixue-1.0.0-x86_64.AppImage](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x86_64.AppImage) | `sudo apt install ./...deb`、または AppImage に実行権限を付与 |
+| Linux x64（ポータブル） | [zhixue-1.0.0-Linux-x64.tar.gz](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-Linux-x64.tar.gz) | `tar -xzf ... && cd zhixue-1.0.0-Linux-x64 && bash run.sh` |
+| macOS Apple Silicon（インストーラー） | [zhixue-1.0.0-arm64.dmg](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-arm64.dmg) | DMG を開き `知学.app` を Applications へドラッグ |
+| macOS Intel（インストーラー） | [zhixue-1.0.0-x64.dmg](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-x64.dmg) | 同上 |
+| macOS（ポータブル） | [zhixue-1.0.0-macOS-arm64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-arm64.zip) / [zhixue-1.0.0-macOS-x64.zip](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/zhixue-1.0.0-macOS-x64.zip) | 解凍して `知学.app` を開く。必要なら `安装.command` を実行 |
 | チェックサム | [SHA256SUMS.txt](https://github.com/xipantingfeng/learn-harness-zh/releases/download/v1.0.0/SHA256SUMS.txt) | `sha256sum -c SHA256SUMS.txt` |
 
 モデルを選び、理解したい内容でセッションを始めます。プロバイダの API キー、デスクトップ版のサブスクリプション接続、インストール済みの Claude Code CLI、カスタム OpenAI 互換エンドポイント（ローカルモデルサーバーを含む）に対応しています。音声入力と Web 検索には別のサービスキーが必要です。
