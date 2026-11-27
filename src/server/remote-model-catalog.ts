@@ -127,7 +127,7 @@ function checkedCompat(api: Api, baselines: readonly Model<Api>[], raw: unknown)
 				});
 				if (!trusted) throw new Error("Unsupported pi.dev model template");
 				const trustedCompat = trusted.compat as { chatTemplateArgs?: unknown; chatTemplateKwargs?: unknown } | undefined;
-				return { ...flags, chatTemplateArgs: trustedCompat?.chatTemplateArgs, chatTemplateKwargs: trustedCompat?.chatTemplateKwargs };
+				return { ...flags, chatTemplateArgs: trustedCompat?.chatTemplateArgs, chatTemplateKwargs: trustedCompat?.chatTemplateKwargs } as Model<Api>["compat"];
 			}
 			return flags;
 		}
