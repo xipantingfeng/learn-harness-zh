@@ -2,7 +2,30 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 const { randomUUID } = require("node:crypto");
 
-const FEED_URL = "https://learnharness.ai/startup-messages.json";
+// Bundled Chinese announcement. No remote feed: the upstream English
+// release notes must never appear in this distribution.
+const LOCAL_FEED = {
+	schemaVersion: 1,
+	messages: [{
+		id: "zhixue-1-0-intro",
+		title: "1.0",
+		publishedAt: "2026-11-27T00:00:00Z",
+		bodyMarkdown: [
+			"欢迎使用知学 1.0。",
+			"",
+			"## 本次亮点",
+			"",
+			"- **看得见的计划**：教学前先给出依赖图，确认后才开始。",
+			"- **回答快捷操作**：再简单点、再详细点、换个例子、我没懂、总结一下、考考我——只预填，不自动发送。",
+			"- **知识会延续**：命题与推理链保存在本地知识图谱，后续教学和练习直接读取。",
+			"- **本地优先**：会话、图谱、设置与密钥都在本机；应用内更新已关闭。",
+			"- **三平台可用**：Windows、Linux、macOS 安装包可在 GitHub Releases 下载。",
+			"",
+			"完整说明见 [安装指南](https://github.com/xipantingfeng/learn-harness-zh/blob/main/INSTALL.md)。"
+		].join("\n")
+	}]
+};
+const FEED_URL = "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(LOCAL_FEED));
 const MAX_FEED_BYTES = 2 * 1024 * 1024;
 const STARTUP_WINDOW_MS = 3000;
 const ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,95}$/;

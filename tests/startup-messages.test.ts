@@ -48,7 +48,7 @@ it("fetches once without credentials and offers only the latest message across l
 	let messages = [first, newest];
 	const fetchImpl = async (url: string, init: RequestInit) => {
 		requests++;
-		assert.equal(url, "https://learnharness.ai/startup-messages.json");
+		assert.ok(url.startsWith("data:application/json;charset=utf-8,"));
 		assert.equal(init.redirect, "error");
 		assert.equal(init.credentials, "omit");
 		assert.equal(init.referrerPolicy, "no-referrer");
